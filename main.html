@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link href="style.css" rel="stylesheet" />
+    <title>Top Secret</title>
+  </head>
+  <body>
+    <div class="center">
+      <h1>Will you be my valentine?</h1>
+      <img src="images/cat-gif.gif" style="width:350px;height:350px;">
+      <div style="display: flex; gap: 50px;">
+        <button style="height: 70px; width: 100px; cursor: pointer; color: black;" id="sheSaidYes">Yes :D</button>
+        <button style="height: 70px; width: 100px; cursor: pointer;" class="nope" id="nope">No :'(</button>
+      </div>
+    </div>
+    <script>
+      let wentRight = true;
+      let wentDown = true;
+      let currentX = 0;
+      let currentY = 0;
+      let scaleYes = 1;
+    
+      nope.addEventListener("mouseenter", () => {
+    
+        const distanceX = Math.floor(Math.random() * 200) + 50;
+        const distanceY = Math.floor(Math.random() * 200) + 50;
+    
+        const moveX = wentRight ? -distanceX : distanceX;
+        const moveY = wentDown ? -distanceY : distanceY;
+    
+        wentRight = !wentRight;
+        wentDown = !wentDown;
+    
+        currentX += moveX;
+        currentY += moveY;
+        scaleYes *= 1.5;
+    
+        nope.style.transform = `translate(${currentX}px, ${currentY}px)`;
+        sheSaidYes.style.transform = `scale(${scaleYes})`;
+      });
+
+      sheSaidYes.addEventListener("click", () => {
+        window.location.href = "yes.html";
+      });
+    </script>
+  </body>
+</html>
